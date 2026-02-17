@@ -1,0 +1,320 @@
+/*
+ * styles.css
+ *
+ * This stylesheet defines the pastel, playful aesthetic of the reconnect page.
+ * It uses soft gradients, rounded corners and gentle animations to create a
+ * warm and inviting environment. The layout is responsive so it looks great
+ * on both mobile and desktop screens. Accessibility concerns such as
+ * contrast and focus outlines are also addressed.
+ */
+
+/* Base styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe9f3 0%, #eaf3ff 100%);
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+}
+
+/* Heart rain container sits behind everything */
+#heart-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* Overlay message displayed when 'No' is clicked */
+#overlay-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 225, 240, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* Hide the overlay when the hidden class is applied. This selector has
+   higher specificity than the ID selector above, ensuring display is
+   overridden correctly. */
+#overlay-message.hidden {
+    display: none;
+}
+
+/* Content inside the overlay */
+#overlay-message .overlay-content p {
+    font-size: 2rem;
+    color: #c43c72;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+    animation: popIn 0.6s ease forwards;
+}
+
+/* Falling hearts */
+.falling-heart {
+    position: fixed;
+    top: -30px;
+    background-color: #ff8fb1;
+    transform: rotate(-45deg);
+    animation: fall 6s linear forwards;
+    opacity: 0;
+}
+
+.falling-heart::before,
+.falling-heart::after {
+    content: "";
+    position: absolute;
+    background-color: inherit;
+    border-radius: 50%;
+}
+
+.falling-heart::before {
+    top: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.falling-heart::after {
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+/* Animations for hearts raining down */
+@keyframes fall {
+    0% {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(110vh);
+    }
+}
+
+/* Pop-in animation for overlay text */
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Main container */
+#container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+}
+
+/* Illustration */
+#douaa-img {
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 1rem;
+    display: block;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+/* Headings */
+h1 {
+    font-size: 1.8rem;
+    color: #d15c8b;
+    margin-bottom: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+    animation: fadeIn 1s ease-in-out;
+}
+
+h2 {
+    font-size: 1.6rem;
+    color: #bf4a78;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0.5rem 0 1.5rem;
+    color: #555;
+}
+
+/* Style for the Instagram contact line */
+.instagram {
+    font-size: 1rem;
+    color: #bf4a78;
+    margin-bottom: 1.5rem;
+}
+.instagram a {
+    color: #ff88a7;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.instagram a:hover,
+.instagram a:focus {
+    color: #e06b91;
+    text-decoration: underline;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.action-btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    color: #fff;
+    outline: none;
+}
+
+/* Yes and No buttons have different colours to help differentiate them */
+#yes-btn {
+    background-color: #ff9fb7;
+}
+#yes-btn:hover,
+#yes-btn:focus {
+    background-color: #ff88a7;
+    transform: translateY(-2px);
+}
+
+#no-btn {
+    background-color: #a5c7f5;
+}
+#no-btn:hover,
+#no-btn:focus {
+    background-color: #8db4ed;
+    transform: translateY(-2px);
+}
+
+#back-btn {
+    background-color: #a5c7f5;
+}
+#back-btn:hover,
+#back-btn:focus {
+    background-color: #8db4ed;
+    transform: translateY(-2px);
+}
+
+/* Hide elements visually but keep them accessible */
+.hidden {
+    display: none;
+}
+
+/* Heart container for animated hearts when 'No' is selected */
+.heart-container {
+    position: relative;
+    height: 120px;
+    margin-top: 0.5rem;
+    overflow: visible;
+}
+
+.heart {
+    position: absolute;
+    bottom: -20px;
+    background-color: #ff8fb1;
+    transform: rotate(-45deg);
+    animation: floatUp 3s ease-in forwards;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    background-color: inherit;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.heart::after {
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: rotate(-45deg) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(-120px);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    #container {
+        padding: 1.5rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+    .action-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    .buttons {
+        flex-direction: column;
+    }
+    .buttons button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconnect with Douaa</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Preload the main audio so it starts playing smoothly -->
+    <link rel="preload" href="audio/romantic.wav" as="audio">
+</head>
+<body>
+    <!-- Container for raining hearts background -->
+    <div id="heart-rain" aria-hidden="true"></div>
+
+    <!-- Main container holds the entire interactive card -->
+    <div id="container" role="main">
+        <!-- User-provided photo shown here to personalise the experience -->
+        <img src="images/douaa_photo.jpg" alt="Photo of a person petting a cat" id="douaa-img">
+
+        <!-- Section shown by default asking if Douaa wants to reconnect -->
+        <div id="message-section" class="active-section">
+            <h1>Hey Douaa, do you want to talk again?</h1>
+            <div class="buttons">
+                <button id="yes-btn" class="action-btn" aria-label="Yes, I'd like to reconnect">Yes</button>
+                <button id="no-btn" class="action-btn" aria-label="No, maybe later">No</button>
+            </div>
+            <!-- Playful message and animated hearts appear when 'No' is selected -->
+            <div id="no-message" class="hidden" aria-live="polite">
+                <p>Not this one, not this one. Try again!</p>
+                <div class="heart-container" aria-hidden="true"></div>
+            </div>
+        </div>
+
+        <!-- Section displayed when the user clicks 'Yes' -->
+        <div id="yes-section" class="hidden">
+            <h2>Yay! I'm so happy to hear that!</h2>
+            <p>I’ve missed our conversations and hope we can reconnect soon. Feel free to reach out and let's catch up on everything we've missed.</p>
+            <!-- Instagram contact information for reconnecting -->
+            <p class="instagram">Connect with me on Instagram:
+                <a href="https://www.instagram.com/whatisusername_000" target="_blank" rel="noopener" aria-label="Visit my Instagram profile">@whatisusername_000</a>
+            </p>
+            <button id="back-btn" class="action-btn" aria-label="Go back to the previous question">Back</button>
+        </div>
+    </div>
+    <!-- Overlay message shown when Douaa clicks “No” -->
+    <div id="overlay-message" class="hidden" aria-live="assertive">
+        <div class="overlay-content">
+            <p>Not this one, not this one. Try again!</p>
+        </div>
+    </div>
+
+    <!-- Background music with controls. Users can play, pause or adjust volume as needed. -->
+    <audio id="background-music" src="audio/romantic.wav" autoplay loop controls>
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- External JavaScript containing interactive behaviour -->
+    <script src="script.js"></script>
+</body>
+</html>
